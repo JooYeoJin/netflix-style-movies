@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTT별 영화 · Netflix Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="홈">NETFLIX</a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html" class="nav-item">상영 · 인기</a>
+        <a href="ott.html" class="nav-item nav-item--active">OTT</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <p class="hero__eyebrow">Watch Providers</p>
+          <h1 id="hero-title" class="hero__title">OTT별 인기 영화</h1>
+          <p class="hero__desc_small">
+            * TDMA 데이터 기준으로, 실제 제공 내용과 차이가 있을 수 있습니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="movies" aria-label="OTT별 영화 목록">
+        <div
+          id="ott-filter"
+          class="ott-filter"
+          role="toolbar"
+          aria-label="OTT 선택"
+        ></div>
+        <p id="status" class="status" role="status" aria-live="polite">
+          영화 목록을 불러오는 중…
+        </p>
+        <div id="movie-rows" class="movie-rows"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>데이터 제공: The Movie Database (TMDB)</p>
+    </footer>
+
+    <div id="movie-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-modal-close tabindex="-1"></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          type="button"
+          class="modal__close"
+          data-modal-close
+          aria-label="닫기"
+        >
+          ×
+        </button>
+        <p class="modal__loading" id="modal-loading">불러오는 중…</p>
+        <div class="modal__content" id="modal-content" hidden>
+          <h2 id="modal-title" class="modal__title"></h2>
+          <dl class="modal__meta">
+            <div class="modal__meta-row">
+              <dt>개봉일</dt>
+              <dd id="modal-release"></dd>
+            </div>
+            <div class="modal__meta-row">
+              <dt>장르</dt>
+              <dd id="modal-genres"></dd>
+            </div>
+            <div class="modal__meta-row">
+              <dt>연령</dt>
+              <dd id="modal-certification"></dd>
+            </div>
+            <div class="modal__meta-row">
+              <dt>평점</dt>
+              <dd id="modal-rating"></dd>
+            </div>
+            <div class="modal__meta-row modal__meta-row--watch">
+              <dt>보러가기</dt>
+              <dd id="modal-watch"></dd>
+            </div>
+            <div class="modal__meta-row modal__meta-row--overview">
+              <dt>줄거리</dt>
+              <dd id="modal-overview"></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <script src="movie-common.js"></script>
+    <script src="ott.js"></script>
+  </body>
+</html>
